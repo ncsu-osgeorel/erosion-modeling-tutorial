@@ -2,11 +2,16 @@
 
 # builds pages from source
 
+# URL of the new version
+URL="https://ncsu-geoforall-lab.github.io/erosion-modeling-tutorial/"
+
 function build_page {
     FILE_SOURCE=$1
     FILE_TARGET=$2
     cat $HEAD_FILE > $OUTDIR/$FILE_TARGET
     echo "<!-- This is a generated file. Do not edit. -->" >> $OUTDIR/$FILE_TARGET
+    FILE=$FILE_TARGET
+    echo "<div style=\"background-color: #FA8; border: 4px solid #F00; padding: 10px;\"><p>This is an unmaintained course material, please see current material at:<ul><li><a href=\"$URL\">$URL</a></li><li><a href=\"$URL$FILE\">$URL$FILE</a> (likely URL)</li></ul></div>" >> $OUTDIR/$FILE_TARGET
     cat $FILE_SOURCE >> $OUTDIR/$FILE_TARGET
     cat $FOOT_FILE >> $OUTDIR/$FILE_TARGET
 }
